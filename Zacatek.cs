@@ -14,13 +14,15 @@ namespace MemoryGame
     public partial class Zacatek : Form
     {
 
-        //bool inicializovano = false;
+        private bool prvniHra = true; //rika, zda je program spusten poprve.
 
-        public Zacatek(bool schovejOpustitButton)
+        public Zacatek(bool prvniHra)
         {
+            this.prvniHra = prvniHra;
             InitializeComponent();
-            if (schovejOpustitButton)
-                opustitHruTuplik();
+
+            if (!prvniHra) //pokud neni hra prvni, vola tuto metodu
+                opustitHruButtonSchovej();
         }
 
         private void opustitHruButton_Click(object sender, EventArgs e) //ukonci hru
@@ -43,30 +45,28 @@ namespace MemoryGame
             {
                 Databaze.Hraci.Insert(0, new Hrac(jmenoTextBox.Text, prijmeniTextBox.Text, obtiznostDomainUpDown.Text, casLabel.Text,"",""));
                 this.Hide();
-                (new PlochaHry()).Show();
-
-                //inicializovano = true;
+                (new PlochaHry(prvniHra)).Show();
             }
         }
 
-        public void obtiznostDomainUpDown_SelectedItemChanged(object sender, EventArgs e) //checkuje obtiznost z listu, vraci string se sekundami
+        public void obtiznostDomainUpDown_SelectedItemChanged(object sender, EventArgs e) //kontroluje obtiznost z listu, vraci string se sekundami
         {
-            int o1;
+            int cas;
 
             if (obtiznostDomainUpDown.Text.Contains("Lehká"))
             {
-                o1 = 150;
+                cas = 80;
             }
             else if (obtiznostDomainUpDown.Text.Contains("Střední"))
             {
-                o1 = 100;
+                cas = 60;
             }
             else
             {
-                o1 = 50;
+                cas = 40;
             }
 
-            casLabel.Text = o1.ToString() +" sekund";
+            casLabel.Text = cas.ToString() +" sekund";
         }
 
        private void Zacatek_Load(object sender, EventArgs e) //list obtiznosti ukazany v domainupdown
@@ -78,14 +78,13 @@ namespace MemoryGame
             obtiznostDomainUpDown.SelectedIndex = 0;
 
             obtiznostDomainUpDown.ReadOnly = true;
-
         }
 
-        private void opustitHruTuplik()
+        private void opustitHruButtonSchovej() //schova opustit hru tlacitko, pohne se start tlacitkem
         {
             opustitHruButton.Enabled = false;
             opustitHruButton.Visible = false;
-            this.hrajButton.Location = new System.Drawing.Point(99, 188);
+            hrajButton.Location = new Point(99, 188);
         }
     }
 }

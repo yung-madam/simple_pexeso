@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MemoryGame
 {
+    [Serializable()]
     public class Hrac 
     {
         public string Jmeno { get; set; }
@@ -15,7 +16,7 @@ namespace MemoryGame
         public string Skore { get; set; }
         public string CasNaSplneni { get; set; }
 
-        public Hrac(string j, string p, string o, string c, string s, string z) //konstruktor hrace, obsahuje jmeno, prijmeni, obtiznost, cas na hrzu, skore a zbyvajici cas. prvni 4 bere z tvorby noveho hrace, posledni dve se vyplnuji na konci hry.
+        public Hrac(string j, string p, string o, string c, string s, string z) //konstruktor hrace, obsahuje jmeno, prijmeni, obtiznost, cas na hru, skore a zbyvajici cas. Prvni 4 bere z tvorby noveho hrace, posledni dve se vyplnuji na konci hry.
         {
             Jmeno = j;
             Prijmeni = p;

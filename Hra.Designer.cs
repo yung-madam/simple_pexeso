@@ -215,7 +215,8 @@
             this.hraciGrid.Name = "hraciGrid";
             this.hraciGrid.ReadOnly = true;
             this.hraciGrid.Size = new System.Drawing.Size(662, 399);
-            this.hraciGrid.TabIndex = 1;
+            this.hraciGrid.TabIndex = 20;
+            this.hraciGrid.TabStop = false;
             // 
             // timer1
             // 
@@ -227,7 +228,7 @@
             this.startButton.Location = new System.Drawing.Point(590, 5);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(103, 43);
-            this.startButton.TabIndex = 2;
+            this.startButton.TabIndex = 1;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
@@ -295,13 +296,14 @@
             this.resetButton.Location = new System.Drawing.Point(590, 54);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(103, 38);
-            this.resetButton.TabIndex = 9;
+            this.resetButton.TabIndex = 2;
             this.resetButton.Text = "Resetuj Hru";
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.PlochaHry_Load);
             // 
             // PlochaHry
             // 
+            this.AcceptButton = this.startButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1478, 422);
